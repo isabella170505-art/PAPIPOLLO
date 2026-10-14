@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Papi Pollo – Un Sabor Diferente</title>
+<link href="https://fonts.googleapis.com/css2?family=Lobster&family=Paytone+One&family=Nunito:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--red:#b3141f;--red2:#d41f2b;--yel:#ffd200;--blk:#0d0d0d;--cream:#fbf5e8;--ink:#1c1c1c;--card:#fffdf8;
+--fd:'Paytone One','Arial Black',sans-serif;--fs:'Lobster',cursive,serif;--fb:'Nunito',system-ui,sans-serif;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:inherit}
+html{height:100%;scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;min-height:100%;background:var(--cream);color:var(--ink);font-family:var(--fb);display:flex}
+button{font:inherit;cursor:pointer;border:0}
+button:focus-visible,a:focus-visible,select:focus-visible,input:focus-visible{outline:3px solid var(--yel);outline-offset:2px}
+/* sidebar */
+.side{width:230px;flex:none;background:var(--blk);color:#fff;position:sticky;top:0;height:100vh;display:flex;flex-direction:column;padding:20px 0 0;overflow:hidden}
+.logo{text-align:center;padding:0 16px}
+.logo img{max-width:100%;max-height:110px}
+.logo-ph{font-family:var(--fd);font-size:34px;line-height:.9;color:var(--yel);-webkit-text-stroke:1px #fff;text-shadow:2px 2px 0 var(--red)}
+.logo-ph small{display:block;color:#fff;font-size:20px;-webkit-text-stroke:0}
+.slogan{font-family:var(--fs);color:#ff3b47;font-size:17px;margin-top:6px}
+.nav{margin:26px 0;display:flex;flex-direction:column;gap:6px;padding:0 0 0 12px}
+.nav a{display:flex;align-items:center;gap:12px;padding:12px 16px;color:#fff;text-decoration:none;font-weight:800;border-radius:30px 0 0 30px}
+.nav a.on{background:var(--yel);color:var(--blk)}
+.nav svg{width:22px;height:22px;fill:currentColor;color:var(--yel)}
+.nav a.on svg{color:var(--blk)}
+.mascot{margin-top:auto;text-align:center;padding:0 14px 8px}
+.mascot .ph{height:130px;margin:0 auto 6px;width:110px}
+.mascot img{max-height:130px}
+.mascot p{font-family:var(--fs);color:var(--yel);font-size:20px;line-height:1.1;margin:0}
+.swash{height:70px;background:var(--yel);clip-path:polygon(0 60%,25% 40%,40% 55%,70% 15%,100% 0,100% 100%,0 100%);margin-top:10px;flex:none}
+/* main */
+.main{flex:1;min-width:0;display:flex;flex-direction:column}
+.top{position:sticky;top:0;z-index:20;display:flex;justify-content:flex-end;align-items:center;gap:26px;padding:12px 28px;background:rgba(13,13,13,.55);backdrop-filter:blur(6px);color:#fff}
+.top a{color:#fff;text-decoration:none;font-weight:800}
+.top a.on{border-bottom:2px solid var(--yel)}
+.cartbtn{position:relative;background:none;color:var(--yel);padding:2px}
+.cartbtn svg{width:30px;height:30px;fill:currentColor}
+.badge{position:absolute;top:-6px;right:-8px;background:var(--red2);color:#fff;border-radius:99px;font-size:12px;font-weight:800;min-width:20px;height:20px;display:grid;place-items:center}
+.view{display:none}.view.on{display:block}
+/* placeholders */
+.ph{background:repeating-linear-gradient(45deg,#ffffff14 0 10px,#ffffff08 10px 20px);border:2px dashed #ffffff55;border-radius:12px;display:grid;place-items:center;text-align:center;font-size:12px;font-weight:800;color:#ffffffaa;padding:6px}
+.light .ph,.ph.l{background:repeating-linear-gradient(45deg,#00000010 0 10px,#00000006 10px 20px);border-color:#00000040;color:#00000090}
+img{display:block;max-width:100%;object-fit:cover}
+/* hero */
+.hero{position:relative;min-height:440px;margin-top:-56px;background:#2a0b08;color:#fff;display:flex;align-items:flex-end;overflow:hidden}
+.hero .bg{position:absolute;inset:0}
+.hero .bg .ph,.hero .bg img{width:100%;height:100%;border-radius:0;border:0;object-fit:cover}
+.hero .brush{position:relative;z-index:2;background:var(--red);padding:30px 60px 30px 36px;clip-path:polygon(0 8%,40% 0,100% 12%,92% 100%,0 100%);max-width:640px}
+.hero h1{font-family:var(--fd);font-size:clamp(40px,7vw,84px);line-height:.9;margin:0;color:var(--yel);text-shadow:3px 3px 0 #fff,5px 5px 0 var(--blk)}
+.hero .sl{font-family:var(--fs);font-size:30px;margin:8px 0 14px}
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--yel);color:var(--blk);font-weight:800;padding:12px 22px;border-radius:30px;text-decoration:none}
+.btn:hover{filter:brightness(.95)}
+.sec{padding:34px 36px;display:grid;grid-template-columns:1.1fr 1fr 1fr;gap:30px;align-items:center}
+.sec h2,.h2{font-family:var(--fd);color:var(--red);font-weight:400;margin:0 0 12px;font-size:26px}
+.sec p{line-height:1.55;margin:0 0 14px}
+.team{height:240px;width:100%;border-radius:6px}
+.what{list-style:none;padding:0;margin:0;display:grid;gap:14px}
+.what li{display:flex;gap:12px;align-items:center}.what i{font-style:normal;font-size:26px}
+.strip{background:var(--red);color:var(--yel);display:flex;justify-content:space-around;flex-wrap:wrap;gap:12px;padding:18px;font-weight:800;margin-top:auto}
+/* menu */
+.mhead{background:var(--red);padding:70px 20px 26px;text-align:center;clip-path:polygon(0 0,100% 0,100% 85%,70% 100%,30% 88%,0 100%)}
+.mhead h1{display:inline-block;margin:0;background:var(--yel);padding:8px 40px;font-family:var(--fs);font-weight:400;font-size:42px;transform:rotate(-2deg);clip-path:polygon(2% 10%,98% 0,100% 90%,0 100%)}
+.mhead p{color:#fff;font-weight:800;margin:8px 0 0}
+.wrap{padding:22px 28px 40px}
+.tabs{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px}
+.tab{background:#fff;border:1px solid #ddd;border-radius:14px;padding:10px 20px;font-weight:800}
+.tab.on{background:var(--red);color:#fff;border-color:var(--red)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:16px}
+.card{background:var(--card);border:1px solid #eadfc8;border-radius:16px;padding:12px;display:flex;flex-direction:column;gap:6px}
+.card .pic{height:140px;cursor:pointer;border-radius:12px;overflow:hidden}
+.card .pic .ph,.card .pic img{height:100%;width:100%}
+.card h3{margin:4px 0 0;font-size:15px;cursor:pointer}
+.card p{margin:0;font-size:12.5px;color:#555;flex:1}
+.price{color:var(--red2);font-weight:800;font-size:19px}
+select{font:inherit;padding:8px;border-radius:10px;border:1px solid #d9cdb3;background:#fff;width:100%}
+.row{display:flex;gap:8px;align-items:center;justify-content:space-between}
+.qty{display:inline-flex;align-items:center;background:#f1ece0;border-radius:10px;border:1px solid #ddd}
+.qty button{background:none;width:32px;height:34px;font-size:18px;font-weight:800}
+.qty span{min-width:26px;text-align:center;font-weight:800}
+.add{background:var(--yel);padding:9px 16px;border-radius:10px;font-weight:800}
+.add:active{transform:scale(.96)}
+/* modal */
+.modal{position:fixed;inset:0;background:#000a;display:none;place-items:center;z-index:50;padding:16px}
+.modal.on{display:grid}
+.mbox{background:var(--cream);border-radius:20px;max-width:760px;width:100%;max-height:92vh;overflow:auto;display:grid;grid-template-columns:1fr 1fr;position:relative}
+.mbox .big{background:var(--red);min-height:300px;padding:16px;display:grid}
+.mbox .big .ph,.mbox .big img{height:100%;width:100%;min-height:260px}
+.mbox .inf{padding:26px 22px;display:flex;flex-direction:column;gap:12px}
+.mbox h2{font-family:var(--fd);color:var(--red);font-weight:400;margin:0;font-size:28px}
+.x{position:absolute;top:10px;right:12px;background:#fff;border-radius:50%;width:34px;height:34px;font-size:18px;font-weight:800;z-index:2}
+.facts{display:flex;gap:22px;font-size:13px;font-weight:600;border-top:1px solid #e3d8c0;padding-top:12px}
+/* carrito */
+.cart{max-width:880px;margin:0 auto}
+.item{display:grid;grid-template-columns:64px 1fr auto 90px 30px;gap:12px;align-items:center;padding:10px;border-bottom:1px solid #e8dec8}
+.item .ph{height:52px;width:64px;font-size:9px;padding:2px}
+.item img{height:52px;width:64px;border-radius:8px}
+.item b.pr{color:var(--red2);text-align:right}
+.del{background:none;font-size:18px}
+.items{background:#fff;border:1px solid #e8dec8;border-radius:14px;overflow:hidden}
+.total{text-align:right;font-size:22px;font-weight:800;margin:14px 6px}
+.form{background:#fff;border:1px solid #e8dec8;border-radius:14px;padding:18px;display:grid;grid-template-columns:1fr 1fr;gap:14px 18px}
+.form .full{grid-column:1/-1}
+.form label{font-weight:800;font-size:14px;display:block;margin-bottom:5px}
+.form .q{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--red2);color:#fff;font-size:12px;margin-right:6px}
+input[type=text],textarea{font:inherit;width:100%;padding:10px;border-radius:10px;border:1px solid #d9cdb3;background:#fff}
+.seg{display:flex;gap:8px;flex-wrap:wrap}
+.seg label{margin:0;display:flex;gap:6px;align-items:center;padding:9px 14px;border:1px solid #d9cdb3;border-radius:12px;background:#fff;cursor:pointer;font-weight:700}
+.seg input:checked+span{color:var(--red2)}
+.seg label:has(input:checked){border-color:var(--red2);background:#fff1ee}
+.wa{margin-top:16px;width:100%;background:#12a233;color:#fff;font-weight:800;font-size:18px;padding:16px;border-radius:12px}
+.wa:hover{background:#0e8c2b}
+.err{color:var(--red2);font-weight:800;margin-top:10px;display:none}
+.empty{text-align:center;padding:40px 10px;font-weight:700}
+.note{font-size:12px;color:#777;margin-top:8px}
+/* contacto */
+.chero{min-height:230px;margin-top:-56px;position:relative;color:#fff;display:flex;align-items:flex-end;background:#2a1208}
+.chero .ph{position:absolute;inset:0;border-radius:0;border:0}
+.chero div.t{position:relative;padding:30px 36px}
+.chero h1{font-family:var(--fd);font-weight:400;margin:0 0 6px;font-size:36px;text-shadow:0 2px 8px #000}
+.cgrid{display:grid;grid-template-columns:1fr 1fr;gap:6px 36px;padding:26px 36px}
+.ci{display:flex;gap:14px;align-items:center;padding:14px 0;border-bottom:1px solid #e3d8c0;text-decoration:none;color:inherit}
+.ci .ic{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;color:#fff;font-weight:800;flex:none;font-size:20px}
+.ci small{display:block;color:#555;font-weight:700}.ci b{font-size:16px}
+.map{border-radius:14px;overflow:hidden;border:1px solid #d9cdb3;background:#e8eef0}
+.map .pin{padding:22px;text-align:center}
+.map .pin big{font-size:44px;display:block}
+.cfoot{background:var(--yel);padding:24px 36px;display:flex;align-items:center;gap:24px;font-family:var(--fs);font-size:34px;margin-top:10px}
+.cfoot .ph{height:110px;width:90px}
+.toast{position:fixed;left:50%;bottom:90px;transform:translateX(-50%) translateY(20px);background:var(--blk);color:#fff;padding:12px 20px;border-radius:30px;font-weight:800;opacity:0;pointer-events:none;transition:.25s;z-index:60}
+.toast.on{opacity:1;transform:translateX(-50%)}
+@media(max-width:860px){
+ body{display:block;padding-bottom:calc(64px + env(safe-area-inset-bottom,0px))}
+ .side{position:fixed;inset:auto 0 0 0;top:auto;width:100%;height:auto;flex-direction:row;padding:0 0 env(safe-area-inset-bottom,0px);z-index:40;border-top:2px solid var(--yel)}
+ .side .logo,.side .mascot,.swash{display:none}
+ .nav{flex-direction:row;margin:0;padding:6px;width:100%;justify-content:space-around}
+ .nav a{flex-direction:column;gap:2px;font-size:12px;padding:6px 14px;border-radius:12px}
+ .top{padding:10px 16px;gap:16px;justify-content:space-between}
+ .top .mlogo{display:block}
+ .sec,.cgrid,.mbox,.form{grid-template-columns:1fr}
+ .hero .brush{padding:24px 40px 24px 20px}
+ .item{grid-template-columns:52px 1fr auto;grid-template-areas:"a b c" "a d e"}
+ .item .ph,.item img{grid-area:a}.item .nm{grid-area:b}.item .qty{grid-area:d;justify-self:start}.item .pr{grid-area:c}.item .del{grid-area:e;justify-self:end}
+}
+.mlogo{display:none;font-family:var(--fd);color:var(--yel)}
+@media(min-width:861px){.top .mlogo{display:none!important}.top{margin-right:0}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+.chero{overflow:hidden;min-height:300px}
+.chero .ph{overflow:hidden}
+.chero .ph img{width:100%;height:100%;object-fit:cover;object-position:center 35%}
+.chero div.t{width:55%;color:#4a0a0a}
+.chero h1{text-shadow:none}
+@media(max-width:860px){.chero div.t{width:100%;margin:0;background:#fff9;border-radius:0}}
+.hor{display:flex;flex-direction:column;gap:3px;margin-top:4px;font-size:14px}
+.aviso{background:#fff7d6;border:1px solid #ecd36a;border-radius:10px;padding:10px 12px;font-size:13.5px;line-height:1.55}
+.promo{background:var(--yel);text-align:center;font-weight:800;padding:10px 14px}
+.ac{position:relative}
+.aclist{display:none;position:absolute;left:0;right:0;top:100%;z-index:30;margin:4px 0 0;padding:4px;list-style:none;background:#fff;border:1px solid #d9cdb3;border-radius:10px;box-shadow:0 8px 20px #0003;max-height:260px;overflow:auto}
+.aclist li{padding:10px 12px;border-radius:8px;cursor:pointer}
+.aclist li:hover,.aclist li.on{background:#fff1ee}
+.aclist li.otro{color:#8a5a00;font-size:13px;border-top:1px solid #eee;margin-top:2px}
+.hero{min-height:520px}
+.hero .bg{top:56px}
+.hero .bg img,.hero .bg .ph{object-position:center top}
+
+</style>
+</head>
+<body>
+<aside class="side">
+ <div class="logo"><div data-img="logo"><div class="logo-ph">Papi<small>POLLO</small></div></div><div class="slogan">Un Sabor Diferente !!!</div></div>
+ <nav class="nav" id="nav">
+  <a href="#inicio" data-v="inicio"><svg viewBox="0 0 24 24"><path d="M12 3 2 12h3v8h5v-5h4v5h5v-8h3z"/></svg>Inicio</a>
+  <a href="#pedidos" data-v="pedidos"><svg viewBox="0 0 24 24"><path d="M7 2v8H5V2H3v8a3 3 0 0 0 3 3v9h2v-9a3 3 0 0 0 3-3V2H9v8H8V2zm9 0c-2 0-4 2-4 6s1 5 3 5v9h2V2z"/></svg>Pedidos</a>
+  <a href="#contacto" data-v="contacto"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm5 13.5c-.2.6-1.2 1.2-1.7 1.2-.5.1-1 .2-3.300-.7-2.700-1.100-4.400-3.800-4.500-4-.1-.2-1.100-1.400-1.100-2.700s.7-1.900.9-2.200c.2-.2.5-.3.700-.3h.5c.2 0 .4 0 .6.500l.8 2c.1.200.1.300 0 .5l-.4.600-.4.400c-.1.200-.3.300-.1.600.7 1.200 1.600 2 2.800 2.600.3.100.4.100.6-.1l.8-1c.2-.2.400-.2.600-.1l1.900.9c.2.100.4.200.4.300.1.200.1.800-.1 1.400z"/></svg>Contacto</a>
+ </nav>
+ <div class="mascot"><div data-img="mascota" class="ph" style="display:none"></div><div id="mascotSlot"></div><p>¡Bienvenido al verdadero sabor del pollo!</p></div>
+ <div class="swash"></div>
+</aside>
+
+<div class="main">
+ <header class="top">
+  <span class="mlogo">Papi Pollo</span>
+  <a href="#inicio" data-t="inicio">Inicio</a><a href="#pedidos" data-t="pedidos">Pedidos</a><a href="#contacto" data-t="contacto">Contacto</a>
+  <button class="cartbtn" id="cartBtn" aria-label="Ver carrito"><svg viewBox="0 0 24 24"><path d="M7 18a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm10 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zM1 2v2h2l3.600 7.600-1.400 2.400A2 2 0 0 0 7 17h12v-2H7.400l1.100-2h7.500a2 2 0 0 0 1.700-1l3.600-6.500A1 1 0 0 0 20.400 4H5.200l-.9-2z"/></svg><span class="badge" id="badge">0</span></button>
+ </header>
+
+ <!-- INICIO -->
+ <section class="view" id="v-inicio">
+  <div class="hero">
+   <div class="bg" data-img="hero" data-label="FOTO PORTADA (pollo + gaseosa)"></div>
+   <div class="brush"><h1>Papi<br>POLLO</h1><div class="sl">Un Sabor Diferente !!!</div><a class="btn" href="#pedidos">Haz tu pedido ahora 🍗</a></div>
+  </div>
+  <div class="sec">
+   <div><h2>¿Quiénes somos?</h2><p>Somos <b>Papi Pollo</b>, un restaurante familiar que nace del amor por el buen sabor y la calidad. Nos especializamos en <b>alitas de pollo</b>, preparadas con recetas únicas que hacen que cada bocado sea una experiencia diferente.</p><a class="btn" href="#contacto">Conoce más</a></div>
+   <div data-img="equipo" data-label="FOTO DEL EQUIPO" class="team"></div>
+   <div><h2>¿Qué hacemos?</h2><ul class="what"><li><i>🍗</i>Alitas de pollo en diferentes sabores y presentaciones.</li><li><i>🍴</i>Porciones para compartir o disfrutar en familia.</li><li><i>🥣</i>Ingredientes frescos y de alta calidad.</li><li><i>🏅</i>El mejor sabor, siempre.</li></ul></div>
+  </div>
+  <div class="strip"><span>🔥 Sabor único</span><span>👨‍🍳 Ingredientes frescos</span><span>✅ Atención y calidad</span></div>
+ </section>
+
+ <!-- PEDIDOS -->
+ <section class="view" id="v-pedidos">
+  <div class="mhead"><h1>Nuestro Menú</h1><p>Elige tus favoritos y arma tu pedido</p></div>
+  <div class="promo">🔥 Martes y jueves: 12 alitas por $25.000</div>
+  <div class="wrap"><div class="tabs" id="tabs"></div><div class="grid" id="grid"></div></div>
+ </section>
+
+ <!-- CARRITO -->
+ <section class="view" id="v-carrito">
+  <div class="wrap cart">
+   <h2 class="h2">Tu pedido</h2>
+   <div class="items" id="items"></div>
+   <div class="total" id="total"></div>
+   <div id="formBox">
+    <h2 class="h2">Completa tus datos</h2>
+    <div class="form">
+     <div><label for="nom">Nombre completo</label><input type="text" id="nom" placeholder="Tu nombre" autocomplete="name"></div>
+<div class="full aviso" id="recNote" style="display:none">🏠 Tu pedido incluye PapiSnacks, que solo se entrega para recoger en el local.</div>     
+<div class="full"><label><span class="q">2</span>¿Con o sin salsas? (Rosada, BBQ, BBQ Picante, Mostaza y Piña)</label>
+      <div class="seg"><label><input type="radio" name="sal" value="Con salsas" checked><span>Con salsas</span></label><label><input type="radio" name="sal" value="Sin salsas"><span>Sin salsas</span></label><label><input type="radio" name="sal" value="Salsas aparte"><span>Salsas aparte</span></label></div></div>
+     <div class="full"><label><span class="q">3</span>¿Vas a recoger o es para domicilio?</label>
+      <div class="seg"><label><input type="radio" name="ent" value="Domicilio" checked><span>🛵 Domicilio</span></label><label><input type="radio" name="ent" value="Recoger en el local"><span>🏠 Recoger</span></label></div></div>
+     <div class="full" id="dirBox"><label for="dir"><span class="q">4</span>Dirección de entrega</label><input type="text" id="dir" placeholder="Ej: Calle 10 # 12-34, Palmira" autocomplete="street-address"></div>
+ <div class="full" id="domInfo">
+ <div class="aviso">🛵 <b>Domicilios</b><br>• Algunos barrios tienen <b>pedido mínimo de $25.000</b>; te lo indicamos al elegir tu barrio.<br>• El valor del domicilio depende del lugar de entrega; el asesor te lo confirma por WhatsApp.</div>
+ <label for="zona" style="margin-top:10px">Selecciona tu barrio</label>
+<div class="ac"><input type="text" id="buscaBarrio" placeholder="Escribe tu barrio…" autocomplete="off" role="combobox" aria-expanded="false" aria-controls="acList"><ul id="acList" class="aclist" role="listbox"></ul></div>
+<select id="zona" style="display:none">   
+<option value="" disabled selected>-- Elige tu barrio --</option>
+  <optgroup label="Sin mínimo de pedido">
+   <option value="0">20 de Julio</option>
+   <option value="0">Alameda</option>
+   <option value="0">Alfonso López</option>
+   <option value="0">Caimitos</option>
+   <option value="0">Camilo Torres</option>
+   <option value="0">Ciudad Belén</option>
+   <option value="0">Ciudadela Comfaunin</option>
+   <option value="0">Colombia</option>
+   <option value="0">Coronado</option>
+   <option value="0">Departamental</option>
+   <option value="0">El Bosque</option>
+   <option value="0">El Jardín</option>
+   <option value="0">El Paraíso</option>
+   <option value="0">Emmanuel</option>
+   <option value="0">Estonia</option>
+   <option value="0">Fray Luis de León</option>
+   <option value="0">Harold Eder</option>
+   <option value="0">Hugo Varela Mondragón</option>
+   <option value="0">Ignacio Torres</option>
+   <option value="0">Jorge Eliécer Gaitán</option>
+   <option value="0">Juan Pablo II</option>
+   <option value="0">La Benedicta</option>
+   <option value="0">La Carbonera Zamorano</option>
+   <option value="0">La Esperanza (Norte)</option>
+   <option value="0">La Vega</option>
+   <option value="0">Las Delicias</option>
+   <option value="0">Loreto Norte</option>
+   <option value="0">Los Mangos</option>
+   <option value="0">Los Samanes</option>
+   <option value="0">Los Sarices</option>
+   <option value="0">Mirriñao</option>
+   <option value="0">Monteclaro</option>
+   <option value="0">Municipal</option>
+   <option value="0">Palma Real</option>
+   <option value="0">Palmeras de Oriente</option>
+   <option value="0">Poblado de Lourdes</option>
+   <option value="0">Popular Modelo</option>
+   <option value="0">Reservas de Zamorano</option>
+   <option value="0">San Cayetano</option>
+   <option value="0">Santiago Eder</option>
+   <option value="0">Santa María del Palmar</option>
+   <option value="0">Santa Teresita</option>
+   <option value="0">Siete de Agosto</option>
+   <option value="0">Uribe Uribe</option>
+   <option value="0">Urbanización Brisas del Norte</option>
+   <option value="0">Urbanización Portal de Buenos Aires</option>
+   <option value="0">Villa Claudia</option>
+   <option value="0">Villa del Caimito</option>
+   <option value="0">Villa del Rosario</option>
+   <option value="0">Villa Diana</option>
+   <option value="0">Villa Praga</option>
+   <option value="0">Zamorano</option>
+  </optgroup>
+  <optgroup label="Pedido mínimo $25.000">
+   <option value="25000">Berlín</option>
+   <option value="25000">Bizerta</option>
+   <option value="25000">Caicelandia</option>
+   <option value="25000">Campestre Palmira</option>
+   <option value="25000">Cerezos de Italia</option>
+   <option value="25000">Colombina</option>
+   <option value="25000">El Doral de la Italia</option>
+   <option value="25000">El Prado</option>
+   <option value="25000">El Recreo</option>
+   <option value="25000">El Trébol</option>
+   <option value="25000">Fray Luis Amigó</option>
+   <option value="25000">Independencia</option>
+   <option value="25000">Industrial 2</option>
+   <option value="25000">La Emilia</option>
+   <option value="25000">La Esperanza (Sur)</option>
+   <option value="25000">La Italia</option>
+   <option value="25000">La Libertad</option>
+   <option value="25000">La Nueva Italia</option>
+   <option value="25000">Las Américas</option>
+   <option value="25000">Las Flores</option>
+   <option value="25000">Las Palmas</option>
+   <option value="25000">Libertadores</option>
+   <option value="25000">Llanogrande</option>
+   <option value="25000">Loreto Sur</option>
+   <option value="25000">Los Cristales</option>
+   <option value="25000">Obrero</option>
+   <option value="25000">Olímpico</option>
+   <option value="25000">Palmeras</option>
+   <option value="25000">Parques de la Italia</option>
+   <option value="25000">Portal de Santa Ana</option>
+   <option value="25000">Portales del Sembrador</option>
+   <option value="25000">Primero de Mayo</option>
+   <option value="25000">Robles</option>
+   <option value="25000">San Jorge</option>
+   <option value="25000">San Pedro</option>
+   <option value="25000">Santa Ana</option>
+   <option value="25000">Santa Bárbara</option>
+   <option value="25000">Sesquicentenario</option>
+   <option value="25000">Urbanización El Sembrador</option>
+   <option value="25000">Urbanización Guayacanes</option>
+   <option value="25000">Urbanización Nuevo Papayal</option>
+   <option value="25000">Versalles</option>
+  </optgroup>
+  <option value="otro">Otro barrio (escríbelo en la dirección)</option>
+ </select>
+ <div class="aviso" id="minAviso" style="display:none;margin-top:8px"></div>
+</div>    
+
+<div class="full"><label><span class="q">5</span>¿Cómo pagas?</label>
+      <div class="seg"><label><input type="radio" name="pag" value="Efectivo" checked><span>💵 Efectivo</span></label><label><input type="radio" name="pag" value="Transferencia"><span>📱 Transferencia</span></label></div></div>
+<div class="full" id="cambioBox">
+ <label>¿Necesitas devuelta?</label>
+ <div class="seg"><label><input type="radio" name="cam" value="si"><span>Sí</span></label><label><input type="radio" name="cam" value="no"><span>No, pago exacto</span></label></div>
+ <div id="montoBox" style="display:none;margin-top:10px"><label for="monto">¿Con cuánto vas a pagar?</label><input type="text" id="monto" inputmode="numeric" placeholder="Ej: $50.000"></div>
+</div>     
+<div class="full"><label for="obs">Observaciones (opcional)</label><input type="text" id="obs" placeholder="Ej: sin picante, timbre dañado…"></div>
+    </div>
+    <div class="err" id="err"></div>
+    <button class="wa" id="waBtn">Confirmar pedido por WhatsApp</button>
+    <div class="note">Se abrirá WhatsApp con tu pedido ya escrito. Un asesor lo confirmará contigo.</div>
+   </div>
+  </div>
+ </section>
+
+ <!-- CONTACTO -->
+ <section class="view" id="v-contacto">
+  <div class="chero"><div class="ph" data-img="contacto" data-label="FOTO CONTACTO (alitas)"></div><div class="t"><h1>¡Estamos para ti!</h1><div>Si tienes dudas o pedidos especiales, contáctanos.</div></div></div>
+  <div class="cgrid">
+   <a class="ci" id="cWa" target="_blank" rel="noopener"><span class="ic" style="background:#12a233">✆</span><span><small>Teléfono / WhatsApp</small><b>+57 320 765 2625</b></span></a>
+   <a class="ci" href="https://www.instagram.com/papipollooficial" target="_blank" rel="noopener"><span class="ic" style="background:linear-gradient(45deg,#f9a825,#d62976,#7b3fe4)">◎</span><span><small>Instagram</small><b>@papipollooficial</b></span></a>
+   <a class="ci" href="https://www.tiktok.com/@papipollo_ofi" target="_blank" rel="noopener"><span class="ic" style="background:#111">♪</span><span><small>TikTok</small><b>@papipollo_ofi</b></span></a>
+   <a class="ci" id="cMap" target="_blank" rel="noopener"><span class="ic" style="background:#111;color:var(--yel)">⌖</span><span><small>Ubicación</small><b>Barrio Zamorano, Diagonal 65 #31-22, Palmira</b></span></a>
+   <div class="ci"><span class="ic" style="background:#111">🕒</span><span><small>Horarios de atención</small>
+<span class="hor"><span><b>Lunes:</b> 04:00 p.m. - 11:30 p.m.</span>
+<span><b>Martes:</b> 04:00 p.m. - 11:30 p.m.</span>
+<span><b>Jueves:</b> 04:00 p.m. - 11:30 p.m.</span>
+<span><b>Viernes:</b> 04:00 p.m. - 11:30 p.m.</span>
+<span><b>Sábado:</b> 04:00 p.m. - 11:30 p.m.</span>
+<span><b>Domingo:</b> 04:00 p.m. - 11:30 p.m.</span>
+<span><b>Domicilios a partir de las 5:00pm</b></span></span>
+</span></div> 
+<div class="map">
+  <iframe title="Ubicación de Papi Pollo" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3982.1330589335157!2d-76.2982384!3d3.5568055999999997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3a049e43f8f373%3A0x519d26948243a90c!2sPapi%20Pollo!5e0!3m2!1ses-419!2sco!4v1791862147993!5m2!1ses-419!2sco" width="100%" height="280" style="border:0" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  <div style="padding:10px;text-align:center"><a class="btn" id="mapBtn" target="_blank" rel="noopener">Ver en Google Maps</a></div>
+</div>  
+
+</div>
+  <div class="cfoot"><div data-img="mascota2" data-label="MASCOTA" class="ph"></div>¡Te esperamos!</div>
+ </section>
+</div>
+
+<div class="modal" id="modal"><div class="mbox" role="dialog" aria-modal="true" id="mbox"></div></div>
+<div class="toast" id="toast"></div>
+
+<script>
+/* ===== CONFIGURACIÓN: edita aquí ===== */
+const PHONE='573207652625';
+const ADDRESS='Papi Pollo, Diagonal 65 #31-22 Palmira neighborhood';
+const MAPS='https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(ADDRESS);
+const HORARIO='';
+/* Imágenes: pega la ruta/URL de cada foto entre las comillas. Vacío = marcador. */
+const IMG={logo:'img/logo sin fondo.png',mascota:'img/mascota.png',mascota2:'img/gracias.png',hero:'img/portada.png',equipo:'img/equipo.png',contacto:'img/fondo.png'};
+/* Productos: img = foto del producto. Precios tomados de tu menú impreso. */
+const P=[
+{id:'trad',c:'Papi Pollo',n:'Papi Pollo Tradicional',d:'Lomitos de pechuga con nuestra receta original apanados, con papa amarilla y salsas.',p:16000,inc:['Lomitos de pollo apanados','Papas amarillas','Salsas'],por:'1 persona',t:'15 - 20 min',img:'img/SENCILLA.jpg'},
+{id:'grat',c:'Papi Pollo',n:'Papi Pollo Gratinada',d:'Lomitos de pechuga apanados, con papitas amarillas y un delicioso queso gratinado.',p:18000,inc:['Lomitos de pollo apanados','Papitas amarillas','Queso gratinado'],por:'1 persona',t:'15 - 20 min',img:'img/GRATINADA.jpg'},
+{id:'gran',c:'Papi Pollo',n:'Papi Pollo Grande (para 2)',d:'Lomitos de pechuga apanados, con papitas amarillas y un delicioso queso gratinado para compartir 2 personas.',p:28000,inc:['Lomitos de pollo apanados','Papitas amarillas','Queso gratinado'],por:'2 personas',t:'15 - 20 min',img:'img/GRANDE.jpg'},
+{id:'mixta',c:'Papi Pollo',n:'Papi Pollo Mixta (para 3)',d:'Lomitos de pollo apanados, tocinetas, costilla, doble queso y papitas amarillas para compartir 3 personas.',p:45000,inc:['Lomitos apanados','Tocineta y costilla','Doble queso','Papitas amarillas'],por:'3 personas',t:'20 - 25 min',img:'img/MIXTA.jpg'},
+{id:'mega',c:'Papi Pollo',n:'Papi Pollo Mega (para 4)',d:'Lomitos de pollo apanado, tocineta, costilla, doble queso y papitas amarillas para compartir 4 personas.',p:55000,inc:['Lomitos apanados','Tocineta y costilla','Doble queso','Papitas amarillas'],por:'4 personas',t:'20 - 25 min',img:'img/MEGA.jpg'},
+{id:'alitas',c:'Alitas',n:'Alitas BBQ y Miel Mostaza',d:'Deliciosas alas apanadas con nuestra receta original, en salsa BBQ y miel mostaza, acompañadas de papa amarilla.',v:[['x 6',25000],['x 12',40000],['x 24',74000],['x 48',130000]],inc:['Alitas apanadas','Salsa BBQ y miel mostaza','Papa amarilla'],por:'Según tamaño',t:'20 - 25 min',img:'img/ALITAS.jpg'},
+{id:'broaster',c:'Porciones',n:'Papi Pollo a la Broaster (entero x 2 kg)',d:'Pollo a la Broaster crocante por fuera y jugoso por dentro, receta 100% original. Incluye papitas amarillas + gaseosa litro.',p:48000,inc:['Pollo entero','Papitas amarillas','Arepa frita','Gaseosa litro'],por:'Familiar',t:'25 - 30 min',img:'img/BROASTER.jpg'},
+{id:'medio',c:'Porciones',n:'1/2 Pollo a la Broaster',d:'Medio pollo a la Broaster con nuestra receta original.',p:24000,inc:['1/2 pollo'],por:'1-2 personas',t:'20 - 25 min',img:'img/mediopollo.png'},
+{id:'cuarto',c:'Porciones',n:'1/4 Pollo a la Broaster',d:'Un cuarto de pollo a la Broaster con nuestra receta original.',p:12000,inc:['1/4 pollo'],por:'1 persona',t:'15 - 20 min',img:'img/cuartopollo.png'},
+{id:'snacks',c:'Porciones',n:'PapiSnacks (nuevo)',d:'¡Tu antojo favorito en un solo cono! La combinación perfecta de pollo supercrocante para disfrutar donde quieras. Pídelo, llévatelo y vive la experiencia Papi Pollo. 🏠 Solo para recoger (no disponible a domicilio).',p:20000,rec:true,inc:['Snack en cono'],por:'1 persona',t:'10 - 15 min',img:'img/SNACKS.jpg'},
+{id:'t1',c:'Porciones',n:'Adicional: Porción de costilla',d:'Adicional / topping.',p:10000,inc:[],img:'img/costilla.png'},
+{id:'t2',c:'Porciones',n:'Adicional: Porción de papa',d:'Adicional / topping.',p:10000,inc:[],img:'img/papas.png'},
+{id:'t3',c:'Porciones',n:'Adicional: Porción de tocineta',d:'Adicional / topping.',p:10000,inc:[],img:'img/tocineta.png'},
+{id:'t4',c:'Porciones',n:'Adicional: Queso adicional',d:'Adicional / topping.',p:4000,inc:[],img:'img/queso.png'},
+{id:'pos',c:'Bebidas',n:'Postobón 1.5L',d:'Bebida fría para acompañar tu pedido.',p:8000,inc:[],img:'img/colombiana.png'},
+{id:'coca',c:'Bebidas',n:'Coca-Cola 1.5L',d:'Bebida fría para acompañar tu pedido.',p:9000,inc:[],img:'img/cocacola.png'},
+{id:'gper',c:'Bebidas',n:'Gaseosa personal',d:'Bebida fría para acompañar tu pedido.',v: [['Coca-Cola', 4000], ['Postobón', 4000]],inc:[],img:'img/personal.png'}
+];
+const dia=new Date(new Date().toLocaleString('en-US',{timeZone:'America/Bogota'})).getDay();
+const PROMO=(dia===2||dia===4); // 2=martes, 4=jueves
+if(PROMO){P.find(x=>x.id==='alitas').v[1]=['x 12 (promo)',25000];}
+try{if(localStorage.getItem('pp_day')!==String(dia)){localStorage.removeItem('pp_cart');localStorage.setItem('pp_day',String(dia))}}catch(e){}
+/* ===== LÓGICA ===== */
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const fmt=n=>'$'+n.toLocaleString('es-CO');
+let cart={},cat='Todas';
+try{cart=JSON.parse(localStorage.getItem('pp_cart'))||{}}catch(e){}
+const save=()=>{try{localStorage.setItem('pp_cart',JSON.stringify(cart))}catch(e){}};
+const pic=(src,label)=>src?`<img src="${src}" alt="${label}" loading="lazy">`:`<div class="ph l">${label}</div>`;
+// placeholders de imágenes de la página
+$$('[data-img]').forEach(el=>{const k=el.dataset.img;if(el.classList.contains('ph')&&!IMG[k]){el.textContent=el.dataset.label||k;return}
+ if(IMG[k]){el.innerHTML=`<img src="${IMG[k]}" alt="${k}">`;return}
+ if(k==='logo')return; if(el.dataset.label&&!el.children.length)el.innerHTML=`<div class="ph" style="width:100%;height:100%;border-radius:0">${el.dataset.label}</div>`});
+if(IMG.mascota)$('#mascotSlot').innerHTML=`<img src="${IMG.mascota}" alt="Mascota" style="max-height:130px;margin:0 auto">`;else $('#mascotSlot').innerHTML='<div class="ph" style="height:120px;width:100px;margin:0 auto 6px">MASCOTA</div>';
+if(IMG.logo)$('[data-img=logo]').innerHTML=`<img src="${IMG.logo}" alt="Papi Pollo">`;
+const wa=t=>`https://wa.me/${PHONE}?text=${encodeURIComponent(t||'¡Hola Papi Pollo! Quiero hacer un pedido.')}`;
+$('#cWa').href=wa();$('#cMap').href=MAPS;$('#mapBtn').href=MAPS;
+$('#v-contacto .ci:nth-child(5) span:last-child').lastChild.textContent=HORARIO;
+// navegación
+function go(v){if(!$('#v-'+v))v='inicio';$$('.view').forEach(x=>x.classList.toggle('on',x.id==='v-'+v));
+ $$('[data-v]').forEach(a=>a.classList.toggle('on',a.dataset.v===v||(v==='carrito'&&a.dataset.v==='pedidos')));
+ $$('[data-t]').forEach(a=>a.classList.toggle('on',a.dataset.t===v));
+ if(v==='carrito')renderCart();window.scrollTo(0,0)}
+addEventListener('hashchange',()=>go(location.hash.slice(1)));
+$('#cartBtn').onclick=()=>{location.hash='#carrito'};
+// menú
+const cats=['Todas','Papi Pollo','Alitas','Porciones','Bebidas'];
+function renderMenu(){
+ $('#tabs').innerHTML=cats.map(c=>`<button class="tab ${c===cat?'on':''}" data-c="${c}">${c}</button>`).join('');
+ $('#grid').innerHTML=P.filter(p=>cat==='Todas'||p.c===cat).map(p=>`<article class="card" data-id="${p.id}">
+ <div class="pic" data-open>${pic(p.img,'FOTO '+p.n)}</div><h3 data-open>${p.n}</h3><p>${p.d}</p>
+ ${p.v?`<select aria-label="Tamaño">${p.v.map((v,i)=>`<option value="${i}">${v[0]}${p.id==='alitas'?' alitas':''} – ${fmt(v[1])}</option>`).join('')}</select>`:`<div class="price">${fmt(p.p)}</div>`}
+ <div class="row"><div class="qty"><button data-m="-1" aria-label="Menos">−</button><span>1</span><button data-m="1" aria-label="Más">+</button></div><button class="add" data-add>Agregar</button></div></article>`).join('')}
+$('#tabs').onclick=e=>{const b=e.target.closest('[data-c]');if(b){cat=b.dataset.c;renderMenu()}};
+function add(id,vi,q){const p=P.find(x=>x.id===id);const v=p.v?p.v[vi]:null;const k=id+(v?'|'+vi:'');
+ const price=v?v[1]:p.p,name=p.n+(v?' '+v[0]:'');
+ cart[k]=cart[k]||{name,price,qty:0,img:p.img};cart[k].qty+=q;save();badge();toast('✔ '+name+' agregado')}
+$('#grid').onclick=e=>{const c=e.target.closest('.card');if(!c)return;const id=c.dataset.id;
+ const m=e.target.closest('[data-m]');if(m){const s=c.querySelector('.qty span');s.textContent=Math.max(1,+s.textContent+ +m.dataset.m)}
+ if(e.target.closest('[data-add]')){const s=c.querySelector('select');add(id,s?+s.value:0,+c.querySelector('.qty span').textContent);c.querySelector('.qty span').textContent=1}
+ if(e.target.closest('[data-open]'))openDetail(id)};
+function openDetail(id){const p=P.find(x=>x.id===id);
+ $('#mbox').innerHTML=`<button class="x" aria-label="Cerrar" id="mx">×</button><div class="big">${pic(p.img,'FOTO '+p.n)}</div><div class="inf"><h2>${p.n}</h2><p style="margin:0">${p.d}</p>
+ ${p.v?`<select id="dv">${p.v.map((v,i)=>`<option value="${i}">${v[0]}${p.id==='alitas'?' alitas':''} – ${fmt(v[1])}</option>`).join('')}</select>`:`<div class="price" style="font-size:28px">${fmt(p.p)}</div>`}
+ <div class="row" style="justify-content:flex-start"><div class="qty"><button data-d="-1" aria-label="Menos">−</button><span id="dq">1</span><button data-d="1" aria-label="Más">+</button></div></div>
+ <button class="add" id="da" style="padding:14px;font-size:16px">🛒 Agregar al carrito</button>
+ ${p.inc.length?`<div><b style="color:var(--red)">Incluye</b><br>${p.inc.join(' · ')}</div>`:''}
+ ${p.por?`<div class="facts"><span>⏱ Preparación: ${p.t}</span><span>👥 Porción: ${p.por}</span></div>`:''}</div>`;
+ $('#modal').classList.add('on');$('#mx').focus();
+ $('#mbox').onclick=e=>{const d=e.target.closest('[data-d]');if(d)$('#dq').textContent=Math.max(1,+$('#dq').textContent+ +d.dataset.d);
+  if(e.target.id==='da'){add(id,$('#dv')?+$('#dv').value:0,+$('#dq').textContent);closeM()}if(e.target.id==='mx')closeM()}}
+const closeM=()=>$('#modal').classList.remove('on');
+$('#modal').onclick=e=>{if(e.target.id==='modal')closeM()};
+addEventListener('keydown',e=>{if(e.key==='Escape')closeM()});
+// carrito
+const total=()=>Object.values(cart).reduce((a,i)=>a+i.price*i.qty,0);
+function badge(){$('#badge').textContent=Object.values(cart).reduce((a,i)=>a+i.qty,0)}
+function renderCart(){const ks=Object.keys(cart);
+ $('#formBox').style.display=ks.length?'block':'none';
+ $('#items').innerHTML=ks.length?ks.map(k=>{const i=cart[k];return `<div class="item" data-k="${k}">${pic(i.img,'FOTO')}<span class="nm"><b>${i.name}</b></span><div class="qty"><button data-q="-1" aria-label="Menos">−</button><span>${i.qty}</span><button data-q="1" aria-label="Más">+</button></div><b class="pr">${fmt(i.price*i.qty)}</b><button class="del" data-del aria-label="Eliminar">🗑</button></div>`}).join(''):'<div class="empty">Tu carrito está vacío.<br><br><a class="btn" href="#pedidos">Ver el menú</a></div>';
+ $('#total').innerHTML=ks.length?`Total: <span style="margin-left:14px;font-size:28px">${fmt(total())}</span>`:'';badge();aplicarEntrega()}
+function aplicarEntrega(){
+ const solo=Object.keys(cart).some(k=>P.find(p=>p.id===k.split('|')[0]&&p.rec));
+ const dom=document.querySelector('input[name=ent][value="Domicilio"]');
+ const rec=document.querySelector('input[name=ent][value="Recoger en el local"]');
+ dom.disabled=solo; if(solo)rec.checked=true;
+ $('#recNote').style.display=solo?'block':'none';
+ actualizarForm();
+}
+
+$('#items').onclick=e=>{const r=e.target.closest('.item');if(!r)return;const k=r.dataset.k;const q=e.target.closest('[data-q]');
+ if(q){cart[k].qty+= +q.dataset.q;if(cart[k].qty<1)delete cart[k]}if(e.target.closest('[data-del]'))delete cart[k];save();renderCart()};
+function actualizarForm(){
+ const mostrar=(id,v)=>{const el=document.getElementById(id);if(el)el.style.display=v?'block':'none'};
+ mostrar('dirBox',rv('ent')==='Domicilio');
+ mostrar('domInfo',rv('ent')==='Domicilio');
+ mostrar('cambioBox',rv('pag')==='Efectivo');
+ const c=document.querySelector('input[name=cam]:checked');
+ mostrar('montoBox',rv('pag')==='Efectivo'&&c&&c.value==='si');
+}
+document.addEventListener('change',e=>{if(['ent','pag','cam'].includes(e.target.name))actualizarForm()});
+
+document.addEventListener('change',e=>{
+ if(e.target.id!=='zona')return;
+ const v=e.target.value,a=$('#minAviso');
+ if(!v){a.style.display='none';return}
+ a.style.display='block';
+ a.textContent=v==='otro'
+  ?'Un asesor te confirmará por WhatsApp si tu barrio requiere un pedido mínimo para domicilio.'
+  :(+v>0?`En tu barrio el pedido mínimo es ${fmt(+v)}.`:'En tu barrio no hay pedido mínimo.');
+});
+
+(function(){
+ const sel=$('#zona'),inp=$('#buscaBarrio'),ul=$('#acList');
+ const norm=s=>s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').trim();
+ const all=[...sel.options].map((o,i)=>({i,t:o.text,n:norm(o.text),v:o.value})).filter(o=>o.v!=='');
+ const otro=all.find(o=>o.v==='otro');
+ let act=-1;
+ const close=()=>{ul.style.display='none';inp.setAttribute('aria-expanded','false');act=-1};
+ const pick=i=>{sel.selectedIndex=i;inp.value=sel.options[i].text;close();sel.dispatchEvent(new Event('change',{bubbles:true}))};
+ const items=()=>[...ul.children];
+ const mark=()=>items().forEach((li,k)=>li.classList.toggle('on',k===act));
+ inp.addEventListener('input',()=>{
+  sel.selectedIndex=0;sel.dispatchEvent(new Event('change',{bubbles:true}));
+  const q=norm(inp.value);
+  if(!q){close();return}
+  const m=all.filter(o=>o!==otro&&o.n.includes(q)).sort((a,b)=>b.n.startsWith(q)-a.n.startsWith(q)).slice(0,8);
+  ul.innerHTML=m.map(o=>`<li role="option" data-i="${o.i}">${o.t}</li>`).join('')+(otro?`<li role="option" class="otro" data-i="${otro.i}">¿No encuentras tu barrio? Elige «Otro barrio»</li>`:'');
+  ul.style.display='block';inp.setAttribute('aria-expanded','true');act=-1;
+ });
+ ul.addEventListener('mousedown',e=>{const li=e.target.closest('li');if(li){e.preventDefault();pick(+li.dataset.i)}});
+ inp.addEventListener('keydown',e=>{
+  const n=items().length;if(!n)return;
+  if(e.key==='ArrowDown'){e.preventDefault();act=(act+1)%n;mark()}
+  else if(e.key==='ArrowUp'){e.preventDefault();act=(act-1+n)%n;mark()}
+  else if(e.key==='Enter'&&act>=0){e.preventDefault();pick(+items()[act].dataset.i)}
+  else if(e.key==='Escape')close();
+ });
+ inp.addEventListener('blur',()=>setTimeout(close,120));
+})();
+
+const rv=n=>document.querySelector(`input[name=${n}]:checked`).value;
+$('#waBtn').onclick=()=>{
+ const er=$('#err');er.style.display='none';
+ const fail=t=>{er.textContent=t;er.style.display='block';er.scrollIntoView({block:'center'})};
+ const nom=$('#nom').value.trim(),ent=rv('ent'),dir=$('#dir').value.trim(),pag=rv('pag'),tot=total();
+ if(!nom)return fail('Escribe tu nombre completo.');
+ let zt='';
+ if(ent==='Domicilio'){
+  if(!dir)return fail('Escribe la dirección de entrega.');
+  const z=$('#zona');
+  if(!z.value)return fail('Selecciona tu barrio.');
+  const min=+z.value;
+  if(min>0&&tot<min)return fail(`En tu barrio el pedido mínimo es ${fmt(min)}. Agrega más productos o elige recoger en el local.`);
+  zt=z.options[z.selectedIndex].text;
+ }
+ let cambio='';
+ if(pag==='Efectivo'){
+  const c=document.querySelector('input[name=cam]:checked');
+  if(!c)return fail('Indica si necesitas devuelta.');
+  if(c.value==='si'){
+   const monto=parseInt($('#monto').value.replace(/\D/g,''),10);
+   if(!monto||monto<=tot)return fail('Escribe con cuánto vas a pagar (debe ser mayor al total).');
+   cambio=`Sí, paga con ${fmt(monto)} (devuelta: ${fmt(monto-tot)})`;
+  }else cambio='No, paga exacto';
+ }
+ const L=Object.values(cart).map(i=>`- ${i.qty} ${i.name}   ${fmt(i.price*i.qty)}`).join('\n');
+ const obs=$('#obs').value.trim();
+ const m=`🍗 *¡NUEVO PEDIDO WEB!*\n\n*Nombre:* ${nom}\n*Entrega:* ${ent}\n${ent==='Domicilio'?`*Dirección:* ${dir}\n*Barrio:* ${zt}\n`:''}*Salsas:* ${rv('sal')} (aparte)\n*Método de pago:* ${pag}\n${cambio?`*¿Devuelta?:* ${cambio}\n`:''}${obs?`*Observaciones:* ${obs}\n`:''}\n${L}\n\n*Total productos:* ${fmt(tot)}\n_(El valor del domicilio lo confirma el asesor)_`;
+ window.open(wa(m),'_blank')};
+
+let tt;function toast(t){const e=$('#toast');e.textContent=t;e.classList.add('on');clearTimeout(tt);tt=setTimeout(()=>e.classList.remove('on'),1600)}
+renderMenu();badge();go(location.hash.slice(1)||'inicio');actualizarForm();
+</script>
+</body>
+</html>
