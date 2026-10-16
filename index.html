@@ -163,6 +163,24 @@ input[type=text],textarea{font:inherit;width:100%;padding:10px;border-radius:10p
 .hero{min-height:520px}
 .hero .bg{top:56px}
 .hero .bg img,.hero .bg .ph{object-position:center top}
+/* Botón "Haz tu pedido ahora" que titila */
+.hero .btn{animation:latido 1.6s ease-in-out infinite}
+@keyframes latido{
+ 0%,100%{transform:scale(1);box-shadow:0 0 0 0 rgba(255,210,0,.7)}
+ 50%{transform:scale(1.06);box-shadow:0 0 0 14px rgba(255,210,0,0)}
+}
+.hero .btn:hover,.hero .btn:focus-visible{animation:none}
+@media(prefers-reduced-motion:reduce){.hero .btn{animation:none}}
+
+/* Portada en celular: la imagen se ve completa y el cuadro rojo queda debajo */
+@media(max-width:860px){
+ .hero{display:block;min-height:0;margin-top:0}
+ .hero .bg{position:relative;inset:auto;top:0;height:auto}
+ .hero .bg img{width:100%;height:auto;object-fit:contain}
+ .hero .bg .ph{height:220px}
+ .hero .brush{max-width:none;width:100%;clip-path:none;padding:22px 20px 26px}
+ .hero h1{font-size:54px}
+}
 
 </style>
 </head>
@@ -192,9 +210,9 @@ input[type=text],textarea{font:inherit;width:100%;padding:10px;border-radius:10p
    <div class="brush"><h1>Papi<br>POLLO</h1><div class="sl">Un Sabor Diferente !!!</div><a class="btn" href="#pedidos">Haz tu pedido ahora 🍗</a></div>
   </div>
   <div class="sec">
-   <div><h2>¿Quiénes somos?</h2><p>Somos <b>Papi Pollo</b>, un restaurante familiar que nace del amor por el buen sabor y la calidad. Nos especializamos en <b>alitas de pollo</b>, preparadas con recetas únicas que hacen que cada bocado sea una experiencia diferente.</p><a class="btn" href="#contacto">Conoce más</a></div>
+   <div><h2>¿Quiénes somos?</h2><p>Somos <b>Papi Pollo</b>, un restaurante familiar que desde mayo de 2019 comparte su pasión por el buen sabor y la calidad. Nos especializamos en <b>lomitos de pechuga apanados con papa amarilla</b>, preparados con recetas únicas que hacen que cada bocado sea una experiencia diferente.</p><a class="btn" href="#contacto">Conoce más</a></div>
    <div data-img="equipo" data-label="FOTO DEL EQUIPO" class="team"></div>
-   <div><h2>¿Qué hacemos?</h2><ul class="what"><li><i>🍗</i>Alitas de pollo en diferentes sabores y presentaciones.</li><li><i>🍴</i>Porciones para compartir o disfrutar en familia.</li><li><i>🥣</i>Ingredientes frescos y de alta calidad.</li><li><i>🏅</i>El mejor sabor, siempre.</li></ul></div>
+   <div><h2>¿Qué hacemos?</h2><ul class="what"><li><i>🍗</i>Lomitos de pechuga apanados en diferentes sabores y presentaciones.</li><li><i>🍴</i>Porciones para compartir o disfrutar en familia.</li><li><i>🥣</i>Ingredientes frescos y de alta calidad.</li><li><i>🏅</i>El mejor sabor, siempre.</li></ul></div>
   </div>
   <div class="strip"><span>🔥 Sabor único</span><span>👨‍🍳 Ingredientes frescos</span><span>✅ Atención y calidad</span></div>
  </section>
@@ -217,7 +235,7 @@ input[type=text],textarea{font:inherit;width:100%;padding:10px;border-radius:10p
     <div class="form">
      <div><label for="nom">Nombre completo</label><input type="text" id="nom" placeholder="Tu nombre" autocomplete="name"></div>
 <div class="full aviso" id="recNote" style="display:none">🏠 Tu pedido incluye PapiSnacks, que solo se entrega para recoger en el local.</div>     
-<div class="full"><label><span class="q">2</span>¿Con o sin salsas? (Rosada, BBQ, BBQ Picante, Mostaza y Piña)</label>
+<div class="full"><label><span class="q">2</span>¿Con o sin salsas? (Rosada, BBQ, Mostaza y Piña)</label>
       <div class="seg"><label><input type="radio" name="sal" value="Con salsas" checked><span>Con salsas</span></label><label><input type="radio" name="sal" value="Sin salsas"><span>Sin salsas</span></label><label><input type="radio" name="sal" value="Salsas aparte"><span>Salsas aparte</span></label></div></div>
      <div class="full"><label><span class="q">3</span>¿Vas a recoger o es para domicilio?</label>
       <div class="seg"><label><input type="radio" name="ent" value="Domicilio" checked><span>🛵 Domicilio</span></label><label><input type="radio" name="ent" value="Recoger en el local"><span>🏠 Recoger</span></label></div></div>
