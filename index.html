@@ -247,110 +247,9 @@ input[type=text],textarea{font:inherit;width:100%;padding:10px;border-radius:10p
  <div class="aviso">🛵 <b>Domicilios</b><br>• Algunos barrios tienen <b>pedido mínimo de $25.000</b>; te lo indicamos al elegir tu barrio.<br>• El valor del domicilio depende del lugar de entrega; el asesor te lo confirma por WhatsApp.</div>
  <label for="zona" style="margin-top:10px">Selecciona tu barrio</label>
 <div class="ac"><input type="text" id="buscaBarrio" placeholder="Escribe tu barrio…" autocomplete="off" role="combobox" aria-expanded="false" aria-controls="acList"><ul id="acList" class="aclist" role="listbox"></ul></div>
-<select id="zona" style="display:none">   
-<option value="" disabled selected>-- Elige tu barrio --</option>
-  <optgroup label="Sin mínimo de pedido">
-   <option value="0">20 de Julio</option>
-   <option value="0">Alameda</option>
-   <option value="0">Alfonso López</option>
-   <option value="0">Caimitos</option>
-   <option value="0">Camilo Torres</option>
-   <option value="0">Ciudad Belén</option>
-   <option value="0">Ciudadela Comfaunin</option>
-   <option value="0">Colombia</option>
-   <option value="0">Coronado</option>
-   <option value="0">Departamental</option>
-   <option value="0">El Bosque</option>
-   <option value="0">El Jardín</option>
-   <option value="0">El Paraíso</option>
-   <option value="0">Emmanuel</option>
-   <option value="0">Estonia</option>
-   <option value="0">Fray Luis de León</option>
-   <option value="0">Harold Eder</option>
-   <option value="0">Hugo Varela Mondragón</option>
-   <option value="0">Ignacio Torres</option>
-   <option value="0">Jorge Eliécer Gaitán</option>
-   <option value="0">Juan Pablo II</option>
-   <option value="0">La Benedicta</option>
-   <option value="0">La Carbonera Zamorano</option>
-   <option value="0">La Esperanza (Norte)</option>
-   <option value="0">La Vega</option>
-   <option value="0">Las Delicias</option>
-   <option value="0">Loreto Norte</option>
-   <option value="0">Los Mangos</option>
-   <option value="0">Los Samanes</option>
-   <option value="0">Los Sarices</option>
-   <option value="0">Mirriñao</option>
-   <option value="0">Monteclaro</option>
-   <option value="0">Municipal</option>
-   <option value="0">Palma Real</option>
-   <option value="0">Palmeras de Oriente</option>
-   <option value="0">Poblado de Lourdes</option>
-   <option value="0">Popular Modelo</option>
-   <option value="0">Reservas de Zamorano</option>
-   <option value="0">San Cayetano</option>
-   <option value="0">Santiago Eder</option>
-   <option value="0">Santa María del Palmar</option>
-   <option value="0">Santa Teresita</option>
-   <option value="0">Siete de Agosto</option>
-   <option value="0">Uribe Uribe</option>
-   <option value="0">Urbanización Brisas del Norte</option>
-   <option value="0">Urbanización Portal de Buenos Aires</option>
-   <option value="0">Villa Claudia</option>
-   <option value="0">Villa del Caimito</option>
-   <option value="0">Villa del Rosario</option>
-   <option value="0">Villa Diana</option>
-   <option value="0">Villa Praga</option>
-   <option value="0">Zamorano</option>
-  </optgroup>
-  <optgroup label="Pedido mínimo $25.000">
-   <option value="25000">Berlín</option>
-   <option value="25000">Bizerta</option>
-   <option value="25000">Caicelandia</option>
-   <option value="25000">Campestre Palmira</option>
-   <option value="25000">Cerezos de Italia</option>
-   <option value="25000">Colombina</option>
-   <option value="25000">El Doral de la Italia</option>
-   <option value="25000">El Prado</option>
-   <option value="25000">El Recreo</option>
-   <option value="25000">El Trébol</option>
-   <option value="25000">Fray Luis Amigó</option>
-   <option value="25000">Independencia</option>
-   <option value="25000">Industrial 2</option>
-   <option value="25000">La Emilia</option>
-   <option value="25000">La Esperanza (Sur)</option>
-   <option value="25000">La Italia</option>
-   <option value="25000">La Libertad</option>
-   <option value="25000">La Nueva Italia</option>
-   <option value="25000">Las Américas</option>
-   <option value="25000">Las Flores</option>
-   <option value="25000">Las Palmas</option>
-   <option value="25000">Libertadores</option>
-   <option value="25000">Llanogrande</option>
-   <option value="25000">Loreto Sur</option>
-   <option value="25000">Los Cristales</option>
-   <option value="25000">Obrero</option>
-   <option value="25000">Olímpico</option>
-   <option value="25000">Palmeras</option>
-   <option value="25000">Parques de la Italia</option>
-   <option value="25000">Portal de Santa Ana</option>
-   <option value="25000">Portales del Sembrador</option>
-   <option value="25000">Primero de Mayo</option>
-   <option value="25000">Robles</option>
-   <option value="25000">San Jorge</option>
-   <option value="25000">San Pedro</option>
-   <option value="25000">Santa Ana</option>
-   <option value="25000">Santa Bárbara</option>
-   <option value="25000">Sesquicentenario</option>
-   <option value="25000">Urbanización El Sembrador</option>
-   <option value="25000">Urbanización Guayacanes</option>
-   <option value="25000">Urbanización Nuevo Papayal</option>
-   <option value="25000">Versalles</option>
-  </optgroup>
-  <option value="otro">Otro barrio (escríbelo en la dirección)</option>
- </select>
- <div class="aviso" id="minAviso" style="display:none;margin-top:8px"></div>
-</div>    
+<select id="zona" style="display:none"><option value="" disabled selected>-- Elige tu barrio --</option></select>
+
+<div class="aviso">🛵 <b>Domicilios</b><br>• El valor del domicilio depende de tu barrio; te lo mostramos al elegirlo.<br>• Algunos barrios tienen pedido mínimo, y en otros solo se puede recoger en el local.</div>  
 
 <div class="full"><label><span class="q">5</span>¿Cómo pagas?</label>
       <div class="seg"><label><input type="radio" name="pag" value="Efectivo" checked><span>💵 Efectivo</span></label><label><input type="radio" name="pag" value="Transferencia"><span>📱 Transferencia</span></label></div></div>
@@ -375,10 +274,13 @@ input[type=text],textarea{font:inherit;width:100%;padding:10px;border-radius:10p
    <a class="ci" id="cWa" target="_blank" rel="noopener"><span class="ic" style="background:#12a233">✆</span><span><small>Teléfono / WhatsApp</small><b>+57 320 765 2625</b></span></a>
    <a class="ci" href="https://www.instagram.com/papipollooficial" target="_blank" rel="noopener"><span class="ic" style="background:linear-gradient(45deg,#f9a825,#d62976,#7b3fe4)">◎</span><span><small>Instagram</small><b>@papipollooficial</b></span></a>
    <a class="ci" href="https://www.tiktok.com/@papipollo_ofi" target="_blank" rel="noopener"><span class="ic" style="background:#111">♪</span><span><small>TikTok</small><b>@papipollo_ofi</b></span></a>
-   <a class="ci" id="cMap" target="_blank" rel="noopener"><span class="ic" style="background:#111;color:var(--yel)">⌖</span><span><small>Ubicación</small><b>Barrio Zamorano, Diagonal 65 #31-22, Palmira</b></span></a>
+<a class="ci" href="https://www.facebook.com/share/1CPdd8zUaH/" target="_blank" rel="noopener"><span class="ic" style="background:#1877f2;font-family:Arial,sans-serif;font-size:26px">f</span><span><small>Facebook</small><b>Papi Pollo</b></span></a>
+   
+<a class="ci" id="cMap" target="_blank" rel="noopener"><span class="ic" style="background:#111;color:var(--yel)">⌖</span><span><small>Ubicación</small><b>Barrio Zamorano, Diagonal 65 #31-22, Palmira</b></span></a>
    <div class="ci"><span class="ic" style="background:#111">🕒</span><span><small>Horarios de atención</small>
 <span class="hor"><span><b>Lunes:</b> 04:00 p.m. - 11:30 p.m.</span>
 <span><b>Martes:</b> 04:00 p.m. - 11:30 p.m.</span>
+<span><b>Miércoles:</b> CERRADO.</span>
 <span><b>Jueves:</b> 04:00 p.m. - 11:30 p.m.</span>
 <span><b>Viernes:</b> 04:00 p.m. - 11:30 p.m.</span>
 <span><b>Sábado:</b> 04:00 p.m. - 11:30 p.m.</span>
@@ -403,7 +305,6 @@ input[type=text],textarea{font:inherit;width:100%;padding:10px;border-radius:10p
 const PHONE='573207652625';
 const ADDRESS='Papi Pollo, Diagonal 65 #31-22 Palmira neighborhood';
 const MAPS='https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(ADDRESS);
-const HORARIO='';
 /* Imágenes: pega la ruta/URL de cada foto entre las comillas. Vacío = marcador. */
 const IMG={logo:'img/logo sin fondo.png',mascota:'img/mascota.png',mascota2:'img/gracias.png',hero:'img/portada.png',equipo:'img/equipo.png',contacto:'img/fondo.png'};
 /* Productos: img = foto del producto. Precios tomados de tu menú impreso. */
@@ -422,9 +323,9 @@ const P=[
 {id:'t2',c:'Porciones',n:'Adicional: Porción de papa',d:'Adicional / topping.',p:10000,inc:[],img:'img/papas.png'},
 {id:'t3',c:'Porciones',n:'Adicional: Porción de tocineta',d:'Adicional / topping.',p:10000,inc:[],img:'img/tocineta.png'},
 {id:'t4',c:'Porciones',n:'Adicional: Queso adicional',d:'Adicional / topping.',p:4000,inc:[],img:'img/queso.png'},
-{id:'pos',c:'Bebidas',n:'Postobón 1.5L',d:'Bebida fría para acompañar tu pedido.',p:8000,inc:[],img:'img/colombiana.png'},
-{id:'coca',c:'Bebidas',n:'Coca-Cola 1.5L',d:'Bebida fría para acompañar tu pedido.',p:9000,inc:[],img:'img/cocacola.png'},
-{id:'gper',c:'Bebidas',n:'Gaseosa personal',d:'Bebida fría para acompañar tu pedido.',v: [['Coca-Cola', 4000], ['Postobón', 4000]],inc:[],img:'img/personal.png'}
+{id:'pos',c:'Bebidas',n:'Gaseosa 1.5L',d:'Bebida fría para acompañar tu pedido.',v: [['Coca-Cola', 9000], ['Manzana', 8000], ['Colombiana', 8000], ['Uva', 8000], ['Quatro', 8000], ['Sprite', 8000], ['Premio', 8000]],inc:[],img:'img/gaseosa1.5.png'},
+{id:'glit',c:'Bebidas',n:'Gaseosa 1L',d:'Bebida fría para acompañar tu pedido.',v: [['Coca-Cola', 8000], ['Manzana', 7000], ['Colombiana', 7000], ['Uva', 7000], ['Quatro', 7000], ['Sprite', 7000], ['Premio', 7000]],inc:[],img:'img/gaseosa1.5.png'},
+{id:'gper',c:'Bebidas',n:'Gaseosa personal',d:'Bebida fría para acompañar tu pedido.',v: [['Coca-Cola', 4000], ['Manzana', 4000], ['Colombiana', 4000], ['Uva', 4000], ['Quatro', 4000], ['Sprite', 4000], ['Premio', 4000]],inc:[],img:'img/personal.png'}
 ];
 const dia=new Date(new Date().toLocaleString('en-US',{timeZone:'America/Bogota'})).getDay();
 const PROMO=(dia===2||dia===4); // 2=martes, 4=jueves
@@ -445,7 +346,6 @@ if(IMG.mascota)$('#mascotSlot').innerHTML=`<img src="${IMG.mascota}" alt="Mascot
 if(IMG.logo)$('[data-img=logo]').innerHTML=`<img src="${IMG.logo}" alt="Papi Pollo">`;
 const wa=t=>`https://wa.me/${PHONE}?text=${encodeURIComponent(t||'¡Hola Papi Pollo! Quiero hacer un pedido.')}`;
 $('#cWa').href=wa();$('#cMap').href=MAPS;$('#mapBtn').href=MAPS;
-$('#v-contacto .ci:nth-child(5) span:last-child').lastChild.textContent=HORARIO;
 // navegación
 function go(v){if(!$('#v-'+v))v='inicio';$$('.view').forEach(x=>x.classList.toggle('on',x.id==='v-'+v));
  $$('[data-v]').forEach(a=>a.classList.toggle('on',a.dataset.v===v||(v==='carrito'&&a.dataset.v==='pedidos')));
@@ -507,18 +407,168 @@ function actualizarForm(){
  mostrar('cambioBox',rv('pag')==='Efectivo');
  const c=document.querySelector('input[name=cam]:checked');
  mostrar('montoBox',rv('pag')==='Efectivo'&&c&&c.value==='si');
+ avisoDom();
 }
 document.addEventListener('change',e=>{if(['ent','pag','cam'].includes(e.target.name))actualizarForm()});
 
-document.addEventListener('change',e=>{
- if(e.target.id!=='zona')return;
- const v=e.target.value,a=$('#minAviso');
- if(!v){a.style.display='none';return}
- a.style.display='block';
- a.textContent=v==='otro'
-  ?'Un asesor te confirmará por WhatsApp si tu barrio requiere un pedido mínimo para domicilio.'
-  :(+v>0?`En tu barrio el pedido mínimo es ${fmt(+v)}.`:'En tu barrio no hay pedido mínimo.');
-});
+function avisoDom(){
+ const z=$('#zona'),a=$('#minAviso');if(!z||!a)return;
+ const o=z.selectedOptions[0];
+ if(!z.value||!o){a.style.display='none';return}
+ const f=o.dataset.fee,min=+(o.dataset.min||0);let t;
+ if(f==='N')t='🏠 Por ahora no hacemos domicilios a este barrio. Tu pedido está disponible solo para recoger en el local: elige «Recoger en el local».';
+ else if(f==='?')t='Un asesor te confirmará por WhatsApp el valor del domicilio y si tu barrio requiere un pedido mínimo.';
+ else t=`🛵 Domicilio a ${o.text}: ${fmt(+f*1000)}. Total con domicilio: ${fmt(total()+ +f*1000)}.`+(min?` Pedido mínimo para domicilio: ${fmt(min)}.`:'');
+ a.style.display='block';a.textContent=t;
+}
+document.addEventListener('change',e=>{if(e.target.id==='zona')avisoDom()});
+
+/* Barrios | valor domicilio en miles ($) | N = no hay domicilio | ? = lo confirma el asesor */
+const BARRIOS=`Zamorano|2
+Brisas del Norte|?
+Los Caimitos|N
+Villa del Caimito|N
+Coronado|N
+20 de Julio|N
+Simón Bolívar|N
+Villa Diana|N
+La Esperanza|5
+Monteclaro|4
+Villa del Rosario|N
+Harold Éder|N
+Hugo Varela Mondragón|N
+Santiago Éder|N
+Ciudadela Comfaunión|6
+Poblado de Lourdes|N
+Ciudad Belén|4
+Palma Real|6
+Molinos 100|N
+Reservas de Zamorano|4
+La Carbonera|4
+Bicentenario|4
+Bosques de Morelia|5
+Villa Claudia|5
+Industrial|5
+Ignacio Torres Giraldo|5
+Juan Pablo II|6
+Santa Teresita|6
+La Benedicta|5
+Estonia|6
+Berlín|6
+Santa Isabel|6
+Versalles|6
+Mirriñao|5
+Los Samanes|5
+Las Mercedes|5
+Samanes de la Merced|5
+Almenares de la Merced|5
+Santa María del Palmar|8
+Campestre (Comuna 2)|7
+Portal de las Palmas|8
+Llanogrande (Comuna 2)|7
+Departamental|6
+Parque de la Merced|5
+Plazuela de la Merced|5
+Villas de Caña Miel|6
+Poblado de Comfaunión|6
+Altamira|5
+La Orlidia|N
+Betania de Comfandi|N
+Fray Luis Amigó|6
+El Prado|6
+Santa Ana|7
+Emilia|6
+La Concordia|6
+Llanogrande (Comuna 3)|9
+Las Acacias|6
+Pomona|6
+Brisas del Bolo|6
+Santa Bárbara|6
+Rivera Escobar|6
+Olímpico|7
+Villa de las Palmas|7
+Bosques de Santa Bárbara|7
+Casas de Alicante|7
+Jorge Eliécer Gaitán|N
+Loreto|N
+Alfonso López|N
+Colombia|6
+Santa Rita|6
+Obrero|6
+San Cayetano|6
+Bizerta|6
+Uribe Uribe|6
+Prados de Oriente|8
+San Pedro|8
+Primero de Mayo|8
+Providencia|N
+La Libertad|8
+Campestre (Comuna 5)|8
+San Carlos|8
+Danubio|8
+San Jorge|8
+San José|10
+José Antonio Galán|10
+Palmeras|8
+María Cano|9
+Popular Modelo|9
+Municipal|9
+Los Sauces|8
+Siete de Agosto|8
+El Jardín|8
+El Bosque|8
+Palmeras del Oriente|8
+Palmeras de Marsella|8
+Buenos Aires|10
+Mejor Vivir|10
+La Alameda|4
+La Estrella|8
+Central|7
+Colombina|8
+Libertadores|8
+Fátima|8
+El Triunfo|8
+Caicelandia|9
+Las Flores|9
+El Paraíso|10
+Ciudadela Palmira|9
+La Trinidad|8
+Luis Carlos Galán|10
+Barrio Nuevo|9
+Las Delicias|9
+El Recreo|9
+Santa Clara|9
+Petruc|9
+Las Américas|9
+La Independencia|9
+Chapinero|9
+Guayacán|9
+Sesquicentenario|10
+Parques de la Italia|10
+Las Victorias|9
+El Trébol|9
+Portales del Recreo|9
+Los Robles|9
+Guayacanes del Ingenio|9
+La Palmirana|9
+El Sembrador|9
+Los Coches|10`;
+/* Barrios con pedido mínimo de $25.000 (venían de la lista anterior; confirmar con el cliente) */
+
+(function(){
+ const sel=$('#zona');
+ BARRIOS.trim().split('\n').forEach(l=>{
+  const [n,f,m]=l.split('|');const fee=f.trim();
+  const o=document.createElement('option');
+  o.value=n;o.textContent=n;o.dataset.fee=fee;
+  if(m!==undefined&&m.trim()!=='')o.dataset.min=+m.trim()*1000; /* excepción manual, en miles */
+  else if(+fee>=6)o.dataset.min=25000; /* regla: domicilio de $6.000 o más */
+  sel.appendChild(o);
+ });
+ const x=document.createElement('option');
+ x.value='otro';x.textContent='Otro barrio (escríbelo en la dirección)';x.dataset.fee='?';
+ sel.appendChild(x);
+})();
 
 (function(){
  const sel=$('#zona'),inp=$('#buscaBarrio'),ul=$('#acList');
@@ -555,30 +605,34 @@ $('#waBtn').onclick=()=>{
  const fail=t=>{er.textContent=t;er.style.display='block';er.scrollIntoView({block:'center'})};
  const nom=$('#nom').value.trim(),ent=rv('ent'),dir=$('#dir').value.trim(),pag=rv('pag'),tot=total();
  if(!nom)return fail('Escribe tu nombre completo.');
- let zt='';
+ let zt='',dom=0,domTxt='';
  if(ent==='Domicilio'){
   if(!dir)return fail('Escribe la dirección de entrega.');
   const z=$('#zona');
   if(!z.value)return fail('Selecciona tu barrio.');
-  const min=+z.value;
+  const o=z.selectedOptions[0],f=o.dataset.fee,min=+(o.dataset.min||0);
+  if(f==='N')return fail('Por ahora no hacemos domicilios a este barrio. Elige «Recoger en el local» para continuar.');
   if(min>0&&tot<min)return fail(`En tu barrio el pedido mínimo es ${fmt(min)}. Agrega más productos o elige recoger en el local.`);
-  zt=z.options[z.selectedIndex].text;
+  zt=o.text;
+  if(f==='?')domTxt='Por confirmar con el asesor';else{dom=+f*1000;domTxt=fmt(dom)}
  }
+ const tg=tot+dom;
  let cambio='';
  if(pag==='Efectivo'){
   const c=document.querySelector('input[name=cam]:checked');
   if(!c)return fail('Indica si necesitas devuelta.');
   if(c.value==='si'){
    const monto=parseInt($('#monto').value.replace(/\D/g,''),10);
-   if(!monto||monto<=tot)return fail('Escribe con cuánto vas a pagar (debe ser mayor al total).');
-   cambio=`Sí, paga con ${fmt(monto)} (devuelta: ${fmt(monto-tot)})`;
+   if(!monto||monto<=tg)return fail('Escribe con cuánto vas a pagar (debe ser mayor al total a pagar).');
+   cambio=`Sí, paga con ${fmt(monto)} (devuelta: ${fmt(monto-tg)})`;
   }else cambio='No, paga exacto';
  }
  const L=Object.values(cart).map(i=>`- ${i.qty} ${i.name}   ${fmt(i.price*i.qty)}`).join('\n');
  const obs=$('#obs').value.trim();
- const m=`🍗 *¡NUEVO PEDIDO WEB!*\n\n*Nombre:* ${nom}\n*Entrega:* ${ent}\n${ent==='Domicilio'?`*Dirección:* ${dir}\n*Barrio:* ${zt}\n`:''}*Salsas:* ${rv('sal')} (aparte)\n*Método de pago:* ${pag}\n${cambio?`*¿Devuelta?:* ${cambio}\n`:''}${obs?`*Observaciones:* ${obs}\n`:''}\n${L}\n\n*Total productos:* ${fmt(tot)}\n_(El valor del domicilio lo confirma el asesor)_`;
+ const m=`*¡NUEVO PEDIDO WEB!*\n\n*Nombre:* ${nom}\n*Entrega:* ${ent}\n${ent==='Domicilio'?`*Dirección:* ${dir}\n*Barrio:* ${zt}\n`:''}*Salsas:* ${rv('sal')} (aparte)\n*Método de pago:* ${pag}\n${cambio?`*¿Devuelta?:* ${cambio}\n`:''}${obs?`*Observaciones:* ${obs}\n`:''}\n${L}\n\n*Total productos:* ${fmt(tot)}\n${ent==='Domicilio'?`*Domicilio:* ${domTxt}\n`:''}*Total a pagar:* ${fmt(tg)}${ent==='Domicilio'&&!dom?' (más domicilio por confirmar)':''}`;
  window.open(wa(m),'_blank')};
 
+ 
 let tt;function toast(t){const e=$('#toast');e.textContent=t;e.classList.add('on');clearTimeout(tt);tt=setTimeout(()=>e.classList.remove('on'),1600)}
 renderMenu();badge();go(location.hash.slice(1)||'inicio');actualizarForm();
 </script>
