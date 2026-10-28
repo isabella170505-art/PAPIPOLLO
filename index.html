@@ -184,6 +184,10 @@ input[type=text],textarea{font:inherit;width:100%;padding:10px;border-radius:10p
  .hero .sl{font-size:5.5vw;margin:1vw 0 3vw}
  .hero .btn{font-size:3.8vw;padding:2.4vw 4.6vw}
 }
+.bn{grid-column:2/-1;align-self:start;max-width:900px;border-radius:16px;overflow:hidden;border:1px solid #eadfc8}
+.bn img{width:100%;height:auto;object-fit:contain;display:block}
+@media(max-width:700px){.bn{grid-column:1/-1;max-width:none}}
+
 
 </style>
 </head>
@@ -244,12 +248,13 @@ input[type=text],textarea{font:inherit;width:100%;padding:10px;border-radius:10p
       <div class="seg"><label><input type="radio" name="ent" value="Domicilio" checked><span>🛵 Domicilio</span></label><label><input type="radio" name="ent" value="Recoger en el local"><span>🏠 Recoger</span></label></div></div>
      <div class="full" id="dirBox"><label for="dir"><span class="q">4</span>Dirección de entrega</label><input type="text" id="dir" placeholder="Ej: Calle 10 # 12-34, Palmira" autocomplete="street-address"></div>
  <div class="full" id="domInfo">
- <div class="aviso">🛵 <b>Domicilios</b><br>• Algunos barrios tienen <b>pedido mínimo de $25.000</b>; te lo indicamos al elegir tu barrio.<br>• El valor del domicilio depende del lugar de entrega; el asesor te lo confirma por WhatsApp.</div>
+ <div class="aviso">🛵 <b>Domicilios</b><br>• Algunos barrios tienen <b>pedido mínimo de $25.000</b>; y en otros solo se puede recoger en el local, te lo indicamos al elegir tu barrio.<br>• El valor del domicilio depende del lugar de entrega; te lo mostramos al elegirlo y el asesor te lo confirma por WhatsApp.</div>
  <label for="zona" style="margin-top:10px">Selecciona tu barrio</label>
 <div class="ac"><input type="text" id="buscaBarrio" placeholder="Escribe tu barrio…" autocomplete="off" role="combobox" aria-expanded="false" aria-controls="acList"><ul id="acList" class="aclist" role="listbox"></ul></div>
 <select id="zona" style="display:none"><option value="" disabled selected>-- Elige tu barrio --</option></select>
+<div class="aviso" id="minAviso" style="display:none;margin-top:8px"></div>
+</div>
 
-<div class="aviso">🛵 <b>Domicilios</b><br>• El valor del domicilio depende de tu barrio; te lo mostramos al elegirlo.<br>• Algunos barrios tienen pedido mínimo, y en otros solo se puede recoger en el local.</div>  
 
 <div class="full"><label><span class="q">5</span>¿Cómo pagas?</label>
       <div class="seg"><label><input type="radio" name="pag" value="Efectivo" checked><span>💵 Efectivo</span></label><label><input type="radio" name="pag" value="Transferencia"><span>📱 Transferencia</span></label></div></div>
@@ -261,7 +266,8 @@ input[type=text],textarea{font:inherit;width:100%;padding:10px;border-radius:10p
 <div class="full"><label for="obs">Observaciones (opcional)</label><input type="text" id="obs" placeholder="Ej: sin picante, timbre dañado…"></div>
     </div>
     <div class="err" id="err"></div>
-    <button class="wa" id="waBtn">Confirmar pedido por WhatsApp</button>
+    <div class="aviso" id="tiempoBox" style="margin-top:14px">⏱ <b>Tiempo de entrega:</b> entre <b>20 minutos y 1 hora</b>, según tu ubicación.<br>• Zamorano y sus alrededores: aprox. <b>20 minutos</b>.<br>• Zonas más alejadas (hasta La Italia): hasta <b>1 hora</b>.</div>
+<button class="wa" id="waBtn">Confirmar pedido por WhatsApp</button>
     <div class="note">Se abrirá WhatsApp con tu pedido ya escrito. Un asesor lo confirmará contigo.</div>
    </div>
   </div>
@@ -309,8 +315,8 @@ const MAPS='https://www.google.com/maps/search/?api=1&query='+encodeURIComponent
 const IMG={logo:'img/logo sin fondo.png',mascota:'img/mascota.png',mascota2:'img/gracias.png',hero:'img/portada.png',equipo:'img/equipo.png',contacto:'img/fondo.png'};
 /* Productos: img = foto del producto. Precios tomados de tu menú impreso. */
 const P=[
-{id:'trad',c:'Papi Pollo',n:'Papi Pollo Tradicional',d:'Lomitos de pechuga con nuestra receta original apanados, con papa amarilla y salsas.',p:16000,inc:['Lomitos de pollo apanados','Papas amarillas','Salsas'],por:'1 persona',t:'15 - 20 min',img:'img/SENCILLA.jpg'},
-{id:'grat',c:'Papi Pollo',n:'Papi Pollo Gratinada',d:'Lomitos de pechuga apanados, con papitas amarillas y un delicioso queso gratinado.',p:18000,inc:['Lomitos de pollo apanados','Papitas amarillas','Queso gratinado'],por:'1 persona',t:'15 - 20 min',img:'img/GRATINADA.jpg'},
+{id:'trad',c:'Papi Pollo',n:'Papi Pollo Tradicional (para 1)',d:'Lomitos de pechuga con nuestra receta original apanados, con papa amarilla y salsas.',p:16000,inc:['Lomitos de pollo apanados','Papas amarillas','Salsas'],por:'1 persona',t:'15 - 20 min',img:'img/SENCILLA.jpg'},
+{id:'grat',c:'Papi Pollo',n:'Papi Pollo Gratinada (para 1)',d:'Lomitos de pechuga apanados, con papitas amarillas y un delicioso queso gratinado.',p:18000,inc:['Lomitos de pollo apanados','Papitas amarillas','Queso gratinado'],por:'1 persona',t:'15 - 20 min',img:'img/GRATINADA.jpg'},
 {id:'gran',c:'Papi Pollo',n:'Papi Pollo Grande (para 2)',d:'Lomitos de pechuga apanados, con papitas amarillas y un delicioso queso gratinado para compartir 2 personas.',p:28000,inc:['Lomitos de pollo apanados','Papitas amarillas','Queso gratinado'],por:'2 personas',t:'15 - 20 min',img:'img/GRANDE.jpg'},
 {id:'mixta',c:'Papi Pollo',n:'Papi Pollo Mixta (para 3)',d:'Lomitos de pollo apanados, tocinetas, costilla, doble queso y papitas amarillas para compartir 3 personas.',p:45000,inc:['Lomitos apanados','Tocineta y costilla','Doble queso','Papitas amarillas'],por:'3 personas',t:'20 - 25 min',img:'img/MIXTA.jpg'},
 {id:'mega',c:'Papi Pollo',n:'Papi Pollo Mega (para 4)',d:'Lomitos de pollo apanado, tocineta, costilla, doble queso y papitas amarillas para compartir 4 personas.',p:55000,inc:['Lomitos apanados','Tocineta y costilla','Doble queso','Papitas amarillas'],por:'4 personas',t:'20 - 25 min',img:'img/MEGA.jpg'},
@@ -355,12 +361,18 @@ addEventListener('hashchange',()=>go(location.hash.slice(1)));
 $('#cartBtn').onclick=()=>{location.hash='#carrito'};
 // menú
 const cats=['Todas','Papi Pollo','Alitas','Porciones','Bebidas'];
+const BANNERS={Alitas:'img/promo.png'};
+function bannerCat(){
+ const s=BANNERS[cat];if(!s)return'';
+ return `<div class="bn"><img src="${s}" alt="Alitas Papi Pollo" onerror="this.parentNode.style.display='none'"></div>`;
+}
+
 function renderMenu(){
  $('#tabs').innerHTML=cats.map(c=>`<button class="tab ${c===cat?'on':''}" data-c="${c}">${c}</button>`).join('');
  $('#grid').innerHTML=P.filter(p=>cat==='Todas'||p.c===cat).map(p=>`<article class="card" data-id="${p.id}">
  <div class="pic" data-open>${pic(p.img,'FOTO '+p.n)}</div><h3 data-open>${p.n}</h3><p>${p.d}</p>
  ${p.v?`<select aria-label="Tamaño">${p.v.map((v,i)=>`<option value="${i}">${v[0]}${p.id==='alitas'?' alitas':''} – ${fmt(v[1])}</option>`).join('')}</select>`:`<div class="price">${fmt(p.p)}</div>`}
- <div class="row"><div class="qty"><button data-m="-1" aria-label="Menos">−</button><span>1</span><button data-m="1" aria-label="Más">+</button></div><button class="add" data-add>Agregar</button></div></article>`).join('')}
+ <div class="row"><div class="qty"><button data-m="-1" aria-label="Menos">−</button><span>1</span><button data-m="1" aria-label="Más">+</button></div><button class="add" data-add>Agregar</button></div></article>`).join('')+bannerCat()}
 $('#tabs').onclick=e=>{const b=e.target.closest('[data-c]');if(b){cat=b.dataset.c;renderMenu()}};
 function add(id,vi,q){const p=P.find(x=>x.id===id);const v=p.v?p.v[vi]:null;const k=id+(v?'|'+vi:'');
  const price=v?v[1]:p.p,name=p.n+(v?' '+v[0]:'');
@@ -407,6 +419,7 @@ function actualizarForm(){
  mostrar('cambioBox',rv('pag')==='Efectivo');
  const c=document.querySelector('input[name=cam]:checked');
  mostrar('montoBox',rv('pag')==='Efectivo'&&c&&c.value==='si');
+ mostrar('tiempoBox',rv('ent')==='Domicilio');
  avisoDom();
 }
 document.addEventListener('change',e=>{if(['ent','pag','cam'].includes(e.target.name))actualizarForm()});
@@ -425,7 +438,7 @@ document.addEventListener('change',e=>{if(e.target.id==='zona')avisoDom()});
 
 /* Barrios | valor domicilio en miles ($) | N = no hay domicilio | ? = lo confirma el asesor */
 const BARRIOS=`Zamorano|2
-Brisas del Norte|?
+Brisas del Norte|4
 Los Caimitos|N
 Villa del Caimito|N
 Coronado|N
@@ -438,7 +451,7 @@ Villa del Rosario|N
 Harold Éder|N
 Hugo Varela Mondragón|N
 Santiago Éder|N
-Ciudadela Comfaunión|6
+Ciudadela Comfaunión|6|0
 Poblado de Lourdes|N
 Ciudad Belén|4
 Palma Real|6
@@ -446,17 +459,18 @@ Molinos 100|N
 Reservas de Zamorano|4
 La Carbonera|4
 Bicentenario|4
+Bosques del Edén|4
 Bosques de Morelia|5
 Villa Claudia|5
 Industrial|5
 Ignacio Torres Giraldo|5
-Juan Pablo II|6
-Santa Teresita|6
+Juan Pablo II|6|0
+Santa Teresita|6|0
 La Benedicta|5
-Estonia|6
-Berlín|6
-Santa Isabel|6
-Versalles|6
+Estonia|6|0
+Berlín|6|0
+Santa Isabel|6|0
+Versalles|6|0
 Mirriñao|5
 Los Samanes|5
 Las Mercedes|5
@@ -466,11 +480,11 @@ Santa María del Palmar|8
 Campestre (Comuna 2)|7
 Portal de las Palmas|8
 Llanogrande (Comuna 2)|7
-Departamental|6
+Departamental|6|0
 Parque de la Merced|5
 Plazuela de la Merced|5
-Villas de Caña Miel|6
-Poblado de Comfaunión|6
+Villas de Caña Miel|6|0
+Poblado de Comfaunión|6|0
 Altamira|5
 La Orlidia|N
 Betania de Comfandi|N
